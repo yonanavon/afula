@@ -40,7 +40,6 @@ const el = {
   loading: document.querySelector('[data-state-loading]'),
   empty: document.querySelector('[data-state-empty]'),
   error: document.querySelector('[data-state-error]'),
-  source: document.querySelector('[data-source]'),
 };
 
 /* -------------------------------------------------------------- טעינה --- */
@@ -254,13 +253,6 @@ function applySettings(settings) {
 
   if (settings.updatedAt) {
     document.querySelector('[data-updated]').hidden = false;
-    document.querySelector('[data-updated-footer]').hidden = false;
-  }
-
-  const share = document.querySelector('[data-share]');
-  if (settings.shareUrl) {
-    share.href = externalHref(settings.shareUrl);
-    share.hidden = false;
   }
 }
 
@@ -302,6 +294,7 @@ function bindEvents() {
 async function init() {
   try {
     const { businesses, settings, source } = await loadData();
+    console.info(source === 'live' ? 'נתונים מהגיליון החי' : 'נתונים מהגיבוי המקומי');
     state.businesses = businesses;
     state.settings = settings;
 
@@ -309,10 +302,6 @@ async function init() {
     buildFilters();
     bindEvents();
     render();
-
-    el.source.textContent = source === 'live'
-      ? 'הנתונים נטענים ישירות מגיליון הכשרות המנוהל על ידי המשגיח.'
-      : 'הנתונים מוצגים מתוך עותק מסונכרן של גיליון הכשרות.';
   } catch (error) {
     console.error(error);
     el.error.hidden = false;

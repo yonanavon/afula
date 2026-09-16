@@ -341,7 +341,7 @@ a { color: var(--brand-ink); }
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(292px, 1fr));
   gap: 18px;
-  padding-block-end: 8px;
+  padding-block-end: 56px;
 }
 
 .card {
@@ -478,7 +478,7 @@ a { color: var(--brand-ink); }
 /* ---------- הודעת מידע ---------- */
 
 .notice {
-  margin-block: 30px 10px;
+  margin-block: 22px 0;
   border: 1px solid var(--line);
   border-radius: var(--radius);
   background: var(--surface);
@@ -503,23 +503,6 @@ a { color: var(--brand-ink); }
   font-size: .9rem;
   line-height: 1.7;
 }
-
-/* ---------- כותרת תחתונה ---------- */
-
-.footer {
-  margin-top: 40px;
-  padding-block: 30px 44px;
-  border-block-start: 1px solid var(--line);
-  color: var(--ink-2);
-  font-size: .88rem;
-}
-
-.footer__outro { margin: 0 0 10px; font-weight: 600; color: var(--ink); }
-.footer__outro:empty { display: none; }
-
-.footer__meta { display: flex; flex-wrap: wrap; gap: 6px 18px; margin: 0; }
-
-.footer__source { margin: 14px 0 0; color: var(--ink-3); font-size: .8rem; }
 
 @media (max-width: 640px) {
   .filters { gap: 12px; }

@@ -30,8 +30,6 @@ export const SETTINGS_KEYS = {
   'תאריך עדכון': 'updatedAt',
   'תאריך עברי': 'updatedAtHebrew',
   'טקסט הקדמה': 'intro',
-  'טקסט סיום': 'outro',
-  'קישור להפצה': 'shareUrl',
 };
 
 /** קטגוריות הכשרות, לפי סדר התצוגה. הצבעים מוגדרים ב-styles.css. */

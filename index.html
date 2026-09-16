@@ -52,6 +52,16 @@
     </div>
   </section>
 
+  <section class="wrap">
+    <details class="notice" open>
+      <summary>
+        <span class="notice__icon" aria-hidden="true">ℹ️</span>
+        על הרשימה ותוקף ההמלצה
+      </summary>
+      <p data-bind="intro"></p>
+    </details>
+  </section>
+
   <section class="filters wrap" aria-label="סינון">
     <div class="filters__group" role="group" aria-label="קטגוריה">
       <span class="filters__label">קטגוריה</span>
@@ -89,27 +99,7 @@
     </p>
   </section>
 
-  <section class="wrap">
-    <details class="notice">
-      <summary>
-        <span class="notice__icon" aria-hidden="true">ℹ️</span>
-        על הרשימה ותוקף ההמלצה
-      </summary>
-      <p data-bind="intro"></p>
-    </details>
-  </section>
 </main>
-
-<footer class="footer">
-  <div class="wrap">
-    <p class="footer__outro" data-bind="outro"></p>
-    <p class="footer__meta">
-      <span data-updated-footer hidden>עודכן לאחרונה: <time data-bind="updatedAt"></time></span>
-      <a data-share hidden href="#">שיתוף הרשימה</a>
-    </p>
-    <p class="footer__source" data-source></p>
-  </div>
-</footer>
 
 <script type="module" src="assets/js/app.js"></script>
 </body>
