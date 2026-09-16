@@ -10,7 +10,7 @@
  * כל עוד sheetId ריק, האתר יציג את הנתונים השמורים בתיקיית data/.
  */
 export const CONFIG = {
-  sheetId: '4vSIfE8nsEpUMrNqaIOQnHwC7mi9GxU5JY',
+  sheetId: '1-YDnXWts-4vSIfE8nsEpUMrNqaIOQnHwC7mi9GxU5JY',
 
   /** שמות הלשוניות בגיליון. יש לשמור על התאמה מדויקת. */
   businessesSheet: 'עסקים',
