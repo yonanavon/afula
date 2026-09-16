@@ -10,7 +10,7 @@
  * כל עוד sheetId ריק, האתר יציג את הנתונים השמורים בתיקיית data/.
  */
 export const CONFIG = {
-  sheetId: '',
+  sheetId: 'https://docs.google.com/spreadsheets/d/1-YDnXWts-4vSIfE8nsEpUMrNqaIOQnHwC7mi9GxU5JY/edit?usp=sharing',
 
   /** שמות הלשוניות בגיליון. יש לשמור על התאמה מדויקת. */
   businessesSheet: 'עסקים',
