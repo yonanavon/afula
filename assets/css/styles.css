@@ -14,6 +14,7 @@
   --brand-ink: #9c3620;
   --brand-soft: #fceee9;
   --ok: #2f7d4f;
+  --alert: #cf2e14;
 
   --cat-milk: #2f6fa8;
   --cat-milk-soft: #e8f1f9;
@@ -42,6 +43,7 @@
     --brand-ink: #ff9d86;
     --brand-soft: #38201a;
     --ok: #57b380;
+    --alert: #ff8a70;
 
     --cat-milk: #7db6e8;
     --cat-milk-soft: #1c2c3a;
@@ -67,6 +69,7 @@
   --brand-ink: #ff9d86;
   --brand-soft: #38201a;
   --ok: #57b380;
+  --alert: #ff8a70;
   --cat-milk: #7db6e8;
   --cat-milk-soft: #1c2c3a;
   --cat-meat: #f18b74;
@@ -418,6 +421,12 @@ a { color: var(--brand-ink); }
 }
 
 .card__line span:first-child { flex: none; opacity: .7; }
+
+/* טקסט שסומן ב-*כוכביות* בגיליון, במקביל לקטעים האדומים בקובץ המקורי. */
+.mark {
+  color: var(--alert);
+  font-weight: 700;
+}
 
 .card__note {
   margin: 0;

@@ -95,6 +95,31 @@ function externalHref(url) {
   return /^https?:\/\//i.test(url) ? url : `https://${url}`;
 }
 
+/**
+ * טקסט שהמשגיח עוטף בכוכביות בגיליון — *כמו כאן* — מוצג מודגש ובאדום,
+ * כמו הקטעים האדומים בקובץ המקורי. כוכבית בודדת מוצגת כפי שהיא.
+ */
+const EMPHASIS = /\*([^*\n]+)\*/g;
+
+/** בונה צמתי DOM ולא HTML, כך שטקסט מהגיליון לעולם אינו מפורש כתגיות. */
+function richText(text) {
+  const source = String(text ?? '');
+  const nodes = [];
+  let last = 0;
+
+  for (const match of source.matchAll(EMPHASIS)) {
+    if (match.index > last) nodes.push(document.createTextNode(source.slice(last, match.index)));
+    nodes.push(element('strong', 'mark', match[1]));
+    last = match.index + match[0].length;
+  }
+  if (last < source.length) nodes.push(document.createTextNode(source.slice(last)));
+
+  return nodes;
+}
+
+/** הסרת סימני ההדגשה, למקומות שבהם אפשר רק טקסט נקי (כותרת הדפדפן). */
+const stripEmphasis = (text) => String(text ?? '').replace(EMPHASIS, '$1');
+
 function element(tag, className, text) {
   const node = document.createElement(tag);
   if (className) node.className = className;
@@ -113,8 +138,9 @@ function matches(business) {
     const haystack = [
       business.name, business.type, business.category, business.address,
       business.area, business.notes, business.extraSupervision, business.productsKashrut,
-    ].join(' ').toLowerCase();
-    if (!state.query.split(/\s+/).every((word) => haystack.includes(word))) return false;
+    ].join(' ');
+    const haystackText = stripEmphasis(haystack).toLowerCase();
+    if (!state.query.split(/\s+/).every((word) => haystackText.includes(word))) return false;
   }
 
   return true;
@@ -156,19 +182,26 @@ function buildCard(business) {
   if (business.type) tags.append(element('span', 'tag', business.type));
   if (tags.childElementCount) body.append(tags);
 
-  const line = (icon, text) => {
+  const line = (icon, prefix, value) => {
     const row = element('div', 'card__line');
     const iconNode = element('span', null, icon);
     iconNode.setAttribute('aria-hidden', 'true');
-    row.append(iconNode, element('span', null, text));
+    const textNode = element('span');
+    if (prefix) textNode.append(prefix);
+    textNode.append(...richText(value));
+    row.append(iconNode, textNode);
     return row;
   };
 
   const place = [business.address, business.area].filter(Boolean).join(', ');
-  if (place) body.append(line('📍', place));
-  if (business.extraSupervision) body.append(line('🛡️', `בהשגחה נוספת: ${business.extraSupervision}`));
-  if (business.productsKashrut) body.append(line('📦', `המוצרים בכשרות: ${business.productsKashrut}`));
-  if (business.notes) body.append(element('p', 'card__note', business.notes));
+  if (place) body.append(line('📍', '', place));
+  if (business.extraSupervision) body.append(line('🛡️', 'בהשגחה נוספת: ', business.extraSupervision));
+  if (business.productsKashrut) body.append(line('📦', 'המוצרים בכשרות: ', business.productsKashrut));
+  if (business.notes) {
+    const note = element('p', 'card__note');
+    note.append(...richText(business.notes));
+    body.append(note);
+  }
 
   const actions = element('div', 'card__actions');
   const action = (href, className, label) => {
@@ -245,11 +278,11 @@ function applySettings(settings) {
   Object.entries(settings).forEach(([key, value]) => {
     if (!value) return;
     document.querySelectorAll(`[data-bind="${key}"]`).forEach((node) => {
-      node.textContent = value;
+      node.replaceChildren(...richText(value));
     });
   });
 
-  if (settings.title) document.title = settings.title;
+  if (settings.title) document.title = stripEmphasis(settings.title);
 
   if (settings.updatedAt) {
     document.querySelector('[data-updated]').hidden = false;
