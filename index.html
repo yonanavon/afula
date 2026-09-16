@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>מדריך העסקים של עפולה</title>
+<meta name="description" content="מדריך עסקי המזון בכשרות מהודרת בעפולה, עפולה עילית וגבעת המורה — פיצריות, מאפיות, פלאפל, מסעדות וחנויות.">
+<meta name="theme-color" content="#c2452b">
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="he_IL">
+<meta property="og:title" content="מדריך העסקים של עפולה">
+<meta property="og:description" content="פיצריות, מאפיות, פלאפל וחנויות בכשרות מהודרת — בעפולה, עפולה עילית וגבעת המורה.">
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍽️</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rubik:wght@500;600;700;800&family=Assistant:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body>
+<a class="skip-link" href="#results">דילוג לרשימת העסקים</a>
+
+<header class="topbar">
+  <div class="wrap topbar__inner">
+    <a class="brand" href="./">
+      <span class="brand__mark" aria-hidden="true">🍽️</span>
+      <span class="brand__text">
+        <strong data-bind="title">מדריך העסקים של עפולה</strong>
+        <small>כשרות מהודרת</small>
+      </span>
+    </a>
+    <div class="updated" data-updated hidden>
+      <span class="updated__dot" aria-hidden="true"></span>
+      <span class="updated__text">עודכן <time data-bind="updatedAt"></time><span data-bind="updatedAtHebrew" class="updated__hebrew"></span></span>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <h1 data-bind="title">מדריך העסקים של עפולה</h1>
+      <p class="hero__sub" data-bind="subtitle">פיצריות, מאפיות, פלאפל וחנויות בכשרות מהודרת</p>
+
+      <div class="search">
+        <span class="search__icon" aria-hidden="true">🔍</span>
+        <input id="search" type="search" autocomplete="off" placeholder="חיפוש לפי שם, סוג עסק או רחוב…" aria-label="חיפוש עסק">
+        <button type="button" class="search__clear" data-clear-search hidden aria-label="ניקוי החיפוש">✕</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="filters wrap" aria-label="סינון">
+    <div class="filters__group" role="group" aria-label="קטגוריה">
+      <span class="filters__label">קטגוריה</span>
+      <div class="chips" data-filter="category"></div>
+    </div>
+    <div class="filters__group" role="group" aria-label="אזור">
+      <span class="filters__label">אזור</span>
+      <div class="chips" data-filter="area"></div>
+    </div>
+    <label class="switch">
+      <input type="checkbox" data-show-inactive>
+      <span class="switch__track" aria-hidden="true"><span class="switch__thumb"></span></span>
+      <span>הצגת עסקים שאינם פעילים</span>
+    </label>
+  </section>
+
+  <div class="wrap resultbar">
+    <p class="resultbar__count" data-count role="status"></p>
+    <button type="button" class="linkbtn" data-reset hidden>איפוס הסינון</button>
+  </div>
+
+  <section id="results" class="wrap">
+    <div class="grid" data-grid></div>
+
+    <p class="state" data-state-loading>טוען את הרשימה…</p>
+
+    <div class="state state--empty" data-state-empty hidden>
+      <span aria-hidden="true">🥲</span>
+      <p>לא נמצאו עסקים שמתאימים לחיפוש.</p>
+      <button type="button" class="btn btn--ghost" data-reset-empty>ניקוי הסינון</button>
+    </div>
+
+    <p class="state state--error" data-state-error hidden>
+      לא הצלחנו לטעון את הרשימה כרגע. נסו לרענן את הדף.
+    </p>
+  </section>
+
+  <section class="wrap">
+    <details class="notice">
+      <summary>
+        <span class="notice__icon" aria-hidden="true">ℹ️</span>
+        על הרשימה ותוקף ההמלצה
+      </summary>
+      <p data-bind="intro"></p>
+    </details>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <p class="footer__outro" data-bind="outro"></p>
+    <p class="footer__meta">
+      <span data-updated-footer hidden>עודכן לאחרונה: <time data-bind="updatedAt"></time></span>
+      <a data-share hidden href="#">שיתוף הרשימה</a>
+    </p>
+    <p class="footer__source" data-source></p>
+  </div>
+</footer>
+
+<script type="module" src="assets/js/app.js"></script>
+</body>
+</html>
