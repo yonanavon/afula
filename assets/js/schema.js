@@ -28,7 +28,6 @@ export const SETTINGS_KEYS = {
   'כותרת האתר': 'title',
   'כותרת משנה': 'subtitle',
   'תאריך עדכון': 'updatedAt',
-  'תאריך עברי': 'updatedAtHebrew',
   'טקסט הקדמה': 'intro',
 };
 

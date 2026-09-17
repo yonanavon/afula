@@ -3,6 +3,7 @@
  * טוען את הנתונים מהגיליון החי, ואם הוא אינו זמין נופל לגיבוי המקומי.
  */
 import { CONFIG } from './config.js';
+import { hebrewDateFor } from './hebrew-date.js';
 import { CATEGORIES, INACTIVE_STATUS, iconForType, splitList } from './schema.js';
 import { fetchFromSheet } from './sheet.js';
 
@@ -283,6 +284,13 @@ function applySettings(settings) {
   });
 
   if (settings.title) document.title = stripEmphasis(settings.title);
+
+  // התאריך העברי נגזר מתאריך העדכון ואינו נלקח מהגיליון, כדי ששני התאריכים
+  // שבסרגל "עודכן" יתארו תמיד את אותו יום.
+  const hebrew = hebrewDateFor(settings.updatedAt);
+  document.querySelectorAll('[data-bind="updatedAtHebrew"]').forEach((node) => {
+    node.textContent = hebrew;
+  });
 
   if (settings.updatedAt) {
     document.querySelector('[data-updated]').hidden = false;
