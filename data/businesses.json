@@ -14,6 +14,7 @@
     "kashrutUrl": "https://mdafula.org.il/restaurant/80",
     "menuUrl": "",
     "image": "",
+    "sukkah": "לא",
     "status": "פעיל"
   },
   {
@@ -31,6 +32,7 @@
     "kashrutUrl": "https://mdafula.org.il/restaurant/90",
     "menuUrl": "https://storage.googleapis.com/emenu_webview/webview.html?SiteID=262f592b-0e17-4aa1-83a9-f38ba7449c18&p=1",
     "image": "",
+    "sukkah": "לא",
     "status": "פעיל"
   },
   {
@@ -48,6 +50,7 @@
     "kashrutUrl": "https://mdafula.org.il/restaurant/76",
     "menuUrl": "",
     "image": "",
+    "sukkah": "לא",
     "status": "פעיל"
   },
   {
@@ -65,6 +68,7 @@
     "kashrutUrl": "https://mdafula.org.il/restaurant/72",
     "menuUrl": "",
     "image": "",
+    "sukkah": "לא",
     "status": "פעיל"
   },
   {
@@ -82,6 +86,7 @@
     "kashrutUrl": "https://mdafula.org.il/restaurant/168",
     "menuUrl": "",
     "image": "",
+    "sukkah": "לא",
     "status": "פעיל"
   },
   {
@@ -99,6 +104,7 @@
     "kashrutUrl": "https://mdafula.org.il/restaurant/171",
     "menuUrl": "",
     "image": "",
+    "sukkah": "לא",
     "status": "פעיל"
   },
   {
@@ -116,6 +122,7 @@
     "kashrutUrl": "https://mdafula.org.il/restaurant/114",
     "menuUrl": "https://www.facebook.com/pizzahamo/?locale=he_IL",
     "image": "",
+    "sukkah": "לא",
     "status": "לא פעיל"
   },
   {
@@ -133,6 +140,7 @@
     "kashrutUrl": "https://mdafula.org.il/restaurant/181",
     "menuUrl": "",
     "image": "",
+    "sukkah": "לא",
     "status": "פעיל"
   },
   {
@@ -150,6 +158,7 @@
     "kashrutUrl": "https://mdafula.org.il/restaurant/131",
     "menuUrl": "",
     "image": "",
+    "sukkah": "לא",
     "status": "פעיל"
   },
   {
@@ -167,6 +176,7 @@
     "kashrutUrl": "https://mdafula.org.il/restaurant/21",
     "menuUrl": "",
     "image": "",
+    "sukkah": "לא",
     "status": "פעיל"
   },
   {
@@ -184,6 +194,7 @@
     "kashrutUrl": "https://mdafula.org.il/restaurant/35",
     "menuUrl": "",
     "image": "",
+    "sukkah": "לא",
     "status": "פעיל"
   },
   {
@@ -201,6 +212,7 @@
     "kashrutUrl": "https://mdafula.org.il/restaurant/142",
     "menuUrl": "",
     "image": "",
+    "sukkah": "לא",
     "status": "פעיל"
   },
   {
@@ -218,6 +230,7 @@
     "kashrutUrl": "https://mdafula.org.il/restaurant/208",
     "menuUrl": "",
     "image": "",
+    "sukkah": "לא",
     "status": "פעיל"
   },
   {
@@ -235,6 +248,7 @@
     "kashrutUrl": "https://mdafula.org.il/restaurant/215",
     "menuUrl": "",
     "image": "",
+    "sukkah": "לא",
     "status": "פעיל"
   },
   {
@@ -252,6 +266,7 @@
     "kashrutUrl": "https://mdafula.org.il/restaurant/74",
     "menuUrl": "",
     "image": "",
+    "sukkah": "לא",
     "status": "פעיל"
   },
   {
@@ -269,6 +284,7 @@
     "kashrutUrl": "https://mdafula.org.il/restaurant/242",
     "menuUrl": "",
     "image": "",
+    "sukkah": "לא",
     "status": "פעיל"
   },
   {
@@ -286,6 +302,7 @@
     "kashrutUrl": "",
     "menuUrl": "",
     "image": "",
+    "sukkah": "לא",
     "status": "לא פעיל"
   },
   {
@@ -303,6 +320,7 @@
     "kashrutUrl": "https://mdafula.org.il/restaurant/44",
     "menuUrl": "",
     "image": "",
+    "sukkah": "לא",
     "status": "פעיל"
   },
   {
@@ -320,6 +338,7 @@
     "kashrutUrl": "https://mdafula.org.il/restaurant/81",
     "menuUrl": "",
     "image": "",
+    "sukkah": "לא",
     "status": "פעיל"
   },
   {
@@ -337,6 +356,7 @@
     "kashrutUrl": "https://mdafula.org.il/restaurant/271",
     "menuUrl": "",
     "image": "",
+    "sukkah": "כן",
     "status": "פעיל"
   }
 ]
