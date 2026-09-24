@@ -3,11 +3,14 @@
  * טוען את הנתונים מהגיליון החי, ואם הוא אינו זמין נופל לגיבוי המקומי.
  */
 import { CONFIG } from './config.js';
-import { hebrewDateFor } from './hebrew-date.js';
+import { hebrewDateFor, isSukkahSeason } from './hebrew-date.js';
 import { CATEGORIES, INACTIVE_STATUS, hasSukkah, iconForType, splitList } from './schema.js';
 import { fetchFromSheet } from './sheet.js';
 
 const ALL = '__all__';
+
+/** התג והמתג של הסוכה מוצגים רק בעונה — משבוע לפני סוכות ועד סוף החג. */
+const SUKKAH_SEASON = isSukkahSeason();
 
 /** שם מחלקה באנגלית לכל קטגוריה, כדי לשמור על סלקטורים ב-ASCII. */
 const CATEGORY_CLASS = { 'חלבי': 'milk', 'בשרי': 'meat', 'פרווה': 'pareve' };
@@ -184,7 +187,7 @@ function buildCard(business) {
     tags.append(element('span', suffix ? `tag tag--${suffix}` : 'tag', category));
   });
   if (business.type) tags.append(element('span', 'tag', business.type));
-  if (hasSukkah(business)) tags.append(element('span', 'tag tag--sukkah', '🌿 יש סוכה'));
+  if (SUKKAH_SEASON && hasSukkah(business)) tags.append(element('span', 'tag tag--sukkah', '🌿 יש סוכה'));
   if (tags.childElementCount) body.append(tags);
 
   const line = (icon, prefix, value) => {
@@ -278,8 +281,8 @@ function buildFilters() {
   const areas = [...new Set(state.businesses.map((b) => b.area).filter(Boolean))];
   buildChips(el.areaChips, areas, 'area');
 
-  // המתג מוצג רק כשלפחות עסק אחד סומן בגיליון כבעל סוכה.
-  el.sukkahOnly.closest('.switch').hidden = !state.businesses.some(hasSukkah);
+  // המתג מוצג רק בעונת הסוכה, וכשלפחות עסק אחד סומן בגיליון כבעל סוכה.
+  el.sukkahOnly.closest('.switch').hidden = !SUKKAH_SEASON || !state.businesses.some(hasSukkah);
 }
 
 function applySettings(settings) {

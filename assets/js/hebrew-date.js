@@ -98,3 +98,23 @@ export function hebrewDate(date) {
 
 /** קיצור נוח: מהטקסט שבגיליון ישירות אל התאריך העברי. */
 export const hebrewDateFor = (text) => hebrewDate(parseUpdatedAt(text));
+
+/**
+ * עונת הסוכה: משבוע לפני החג (ח׳ בתשרי) ועד הושענא רבה (כ״א בתשרי), כולל.
+ * מחושב לפי התאריך המקומי של הגולש, ובלי תלות בשנה — כך שזה חוזר מאליו כל שנה.
+ * לבדיקה מחוץ לעונה: הוסיפו ?sukkah=1 לכתובת האתר.
+ */
+export function isSukkahSeason(date = new Date()) {
+  if (/[?&]sukkah=1\b/.test(globalThis.location?.search ?? '')) return true;
+
+  try {
+    const parts = new Intl.DateTimeFormat('en-u-ca-hebrew', { day: 'numeric', month: 'long' })
+      .formatToParts(date);
+    const value = (type) => parts.find((part) => part.type === type)?.value ?? '';
+    const day = Number(value('day'));
+    return /^tish/i.test(value('month')) && day >= 8 && day <= 21;
+  } catch {
+    // דפדפן ללא לוח השנה העברי — לא מציגים את הסוכה, כדי לא להציגה כל השנה.
+    return false;
+  }
+}
