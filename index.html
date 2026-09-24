@@ -43,22 +43,20 @@
       <h1 data-bind="title">עסקים מומלצים לאנ"ש בכשרות מהודרת בעפולה</h1>
       <p class="hero__sub" data-bind="subtitle">פיצריות, מאפיות, פלאפל וחנויות בכשרות מהודרת</p>
 
+      <details class="notice" open>
+        <summary>
+          <span class="notice__icon" aria-hidden="true">ℹ️</span>
+          על הרשימה ותוקף ההמלצה
+        </summary>
+        <p data-bind="intro"></p>
+      </details>
+
       <div class="search">
         <span class="search__icon" aria-hidden="true">🔍</span>
         <input id="search" type="search" autocomplete="off" placeholder="חיפוש לפי שם, סוג עסק או רחוב…" aria-label="חיפוש עסק">
         <button type="button" class="search__clear" data-clear-search hidden aria-label="ניקוי החיפוש">✕</button>
       </div>
     </div>
-  </section>
-
-  <section class="wrap">
-    <details class="notice" open>
-      <summary>
-        <span class="notice__icon" aria-hidden="true">ℹ️</span>
-        על הרשימה ותוקף ההמלצה
-      </summary>
-      <p data-bind="intro"></p>
-    </details>
   </section>
 
   <section class="filters wrap" aria-label="סינון">
