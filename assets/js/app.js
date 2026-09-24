@@ -4,7 +4,7 @@
  */
 import { CONFIG } from './config.js';
 import { hebrewDateFor } from './hebrew-date.js';
-import { CATEGORIES, INACTIVE_STATUS, iconForType, splitList } from './schema.js';
+import { CATEGORIES, INACTIVE_STATUS, hasSukkah, iconForType, splitList } from './schema.js';
 import { fetchFromSheet } from './sheet.js';
 
 const ALL = '__all__';
@@ -26,6 +26,7 @@ const state = {
   category: ALL,
   area: ALL,
   showInactive: false,
+  sukkahOnly: false,
 };
 
 const el = {
@@ -36,6 +37,7 @@ const el = {
   categoryChips: document.querySelector('[data-filter="category"]'),
   areaChips: document.querySelector('[data-filter="area"]'),
   showInactive: document.querySelector('[data-show-inactive]'),
+  sukkahOnly: document.querySelector('[data-sukkah-only]'),
   reset: document.querySelector('[data-reset]'),
   resetEmpty: document.querySelector('[data-reset-empty]'),
   loading: document.querySelector('[data-state-loading]'),
@@ -132,6 +134,7 @@ function element(tag, className, text) {
 
 function matches(business) {
   if (!state.showInactive && !isActive(business)) return false;
+  if (state.sukkahOnly && !hasSukkah(business)) return false;
   if (state.category !== ALL && !categoriesOf(business).includes(state.category)) return false;
   if (state.area !== ALL && business.area !== state.area) return false;
 
@@ -148,7 +151,7 @@ function matches(business) {
 }
 
 const hasFilters = () =>
-  state.query !== '' || state.category !== ALL || state.area !== ALL || state.showInactive;
+  state.query !== '' || state.category !== ALL || state.area !== ALL || state.showInactive || state.sukkahOnly;
 
 /* -------------------------------------------------------------- תצוגה --- */
 
@@ -181,6 +184,7 @@ function buildCard(business) {
     tags.append(element('span', suffix ? `tag tag--${suffix}` : 'tag', category));
   });
   if (business.type) tags.append(element('span', 'tag', business.type));
+  if (hasSukkah(business)) tags.append(element('span', 'tag tag--sukkah', '🌿 יש סוכה'));
   if (tags.childElementCount) body.append(tags);
 
   const line = (icon, prefix, value) => {
@@ -273,6 +277,9 @@ function buildFilters() {
 
   const areas = [...new Set(state.businesses.map((b) => b.area).filter(Boolean))];
   buildChips(el.areaChips, areas, 'area');
+
+  // המתג מוצג רק כשלפחות עסק אחד סומן בגיליון כבעל סוכה.
+  el.sukkahOnly.closest('.switch').hidden = !state.businesses.some(hasSukkah);
 }
 
 function applySettings(settings) {
@@ -302,8 +309,10 @@ function resetFilters() {
   state.category = ALL;
   state.area = ALL;
   state.showInactive = false;
+  state.sukkahOnly = false;
   el.search.value = '';
   el.showInactive.checked = false;
+  el.sukkahOnly.checked = false;
   buildFilters();
   render();
 }
@@ -325,6 +334,11 @@ function bindEvents() {
 
   el.showInactive.addEventListener('change', () => {
     state.showInactive = el.showInactive.checked;
+    render();
+  });
+
+  el.sukkahOnly.addEventListener('change', () => {
+    state.sukkahOnly = el.sukkahOnly.checked;
     render();
   });
 

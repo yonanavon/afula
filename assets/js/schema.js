@@ -20,6 +20,7 @@ export const BUSINESS_COLUMNS = {
   'קישור לפרטי ההשגחה': 'kashrutUrl',
   'קישור לתפריט': 'menuUrl',
   'תמונה': 'image',
+  'סוכה': 'sukkah',
   'סטטוס': 'status',
 };
 
@@ -36,6 +37,16 @@ export const CATEGORIES = ['חלבי', 'בשרי', 'פרווה'];
 
 /** הערך בעמודת "סטטוס" שמסמן עסק שאינו פעיל כרגע. */
 export const INACTIVE_STATUS = 'לא פעיל';
+
+/**
+ * האם בעסק יש סוכה. מקבל "כן" וכדומה, וגם תיבת סימון של Google Sheets
+ * (שמיוצאת כ-TRUE). תא ריק או "לא" — אין סוכה.
+ */
+const SUKKAH_YES = ['כן', 'יש', 'v', '✓', '✔', 'true', '1'];
+
+export function hasSukkah(business) {
+  return SUKKAH_YES.includes(String(business.sukkah ?? '').trim().toLowerCase());
+}
 
 /** אייקון לפי סוג העסק. משמש כשאין תמונה בעמודת "תמונה". */
 const TYPE_ICONS = [

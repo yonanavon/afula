@@ -294,6 +294,11 @@ a { color: var(--brand-ink); }
   margin-inline-start: auto;
 }
 
+.switch[hidden] { display: none; }
+
+/* כששני המתגים מוצגים, רק הראשון נדחף לקצה — השני צמוד אליו. */
+.switch + .switch { margin-inline-start: 0; }
+
 .switch input { position: absolute; opacity: 0; width: 0; height: 0; }
 
 .switch__track {
@@ -411,6 +416,7 @@ a { color: var(--brand-ink); }
 .tag--milk   { background: var(--cat-milk-soft);   color: var(--cat-milk); }
 .tag--meat   { background: var(--cat-meat-soft);   color: var(--cat-meat); }
 .tag--pareve { background: var(--cat-pareve-soft); color: var(--cat-pareve); }
+.tag--sukkah { background: var(--cat-pareve-soft); color: var(--cat-pareve); }
 
 .card__line {
   display: flex;
